@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card" role="main" aria-label="Password generator card">
+    <h1>Password Generator</h1>
+    <p class="lead">Generate secure passwords. Toggle options, set length, and copy the result.</p>
+
+    <div class="output-row">
+      <div id="pw" class="password-box" aria-live="polite">Click Generate to create password</div>
+      <button id="copyBtn" class="icon-btn" title="Copy password">Copy</button>
+      <button id="genBtn" class="btn" title="Generate password">Generate</button>
+    </div>
+
+    <div class="controls" aria-hidden="false">
+      <div class="control column">
+        <label for="length">Length <span id="lenValue" class="accent">12</span></label>
+        <input id="length" type="range" min="6" max="32" value="12" />
+      </div>
+
+      <div class="control column">
+        <label>Include characters</label>
+        <div class="checkboxes" role="group" aria-label="Character types">
+          <label class="cb"><input id="lower" type="checkbox" checked /> Lowercase</label>
+          <label class="cb"><input id="upper" type="checkbox" checked /> Uppercase</label>
+          <label class="cb"><input id="numbers" type="checkbox" checked /> Numbers</label>
+          <label class="cb"><input id="symbols" type="checkbox" checked /> Symbols</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta">
+      <div class="strength-area">
+        <div class="small">Strength</div>
+        <div class="strength" aria-hidden="true"><i id="strengthBar"></i></div>
+        <div id="strengthText" class="small">—</div>
+      </div>
+
+      <div class="actions">
+        <button id="copyAll" class="icon-btn">Copy</button>
+        <button id="regen" class="icon-btn">Regenerate</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Tip: Use different passwords for different accounts. Use a password manager to store them.
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
